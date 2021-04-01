@@ -10,6 +10,7 @@ public class LoginPage extends BaseClass{
     private String PASSWORD_LOCATOR = ".//input[@id='field_password']";
     private String SIGN_IN_LOCATOR = ".//*[@value='Войти в Одноклассники']";
 
+
     LoginPage(WebDriver driver) {
         this.driver = driver;
         check();
