@@ -1,9 +1,15 @@
-package test.java;
+import org.openqa.selenium.WebDriver;
 
 public class UserPage {
 
-    public UserPage()
-    {
+    WebDriver driver;
+
+    UserPage(WebDriver driver) {
+        this.driver = driver;
+        check();
+    }
+
+    protected void check() {
 
     }
 }
