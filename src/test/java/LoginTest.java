@@ -3,8 +3,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class LoginTest extends BaseClass{
-    String username = "Test";
-    String password = "12qw!@QW";
+    String username = "TstBot2012YP";
+    String password = "testQA1";
+
 
     @Test
     public void testGoogleSearch() throws InterruptedException {
