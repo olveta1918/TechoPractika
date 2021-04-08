@@ -14,7 +14,7 @@ public class FriendsTest extends BaseClass {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.doLogin(username, password);
         UserPage userPage = new UserPage(driver);
-        userPage.gotoFriends().isFriendPresent(name);
+        userPage.gotoFriends().search(name).isFriendPresent(name);
     }
 
 }

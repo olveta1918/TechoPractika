@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -14,6 +15,7 @@ import java.util.List;
 public class FriendsPage {
     private String FRIENDS_BLOCK_LOCATOR = ".//*[@id='hook_Block_MyFriendsSquareCardsPagingB']";
     private String FRIEND_CARD = ".//*[@class = 'ugrid_i']";
+    private String SEARCH_LOCATOR = ".//*[contains(@class, 'friend-search-input')]//*[contains(@class, 'input-field')]";
 
     WebDriver driver;
     FriendsPage(WebDriver driver) {
@@ -38,7 +40,11 @@ public class FriendsPage {
             if (friendsList.get(index).getText().contains(name))
                 return friendsList.get(index);
         }
-        return null;
+        return (WebElement) Collections.emptyList();
+    }
+    public FriendsPage search (String text){
+        driver.findElement(By.xpath(SEARCH_LOCATOR)).sendKeys(text);
+        return new FriendsPage(driver);
     }
 
     /**
@@ -48,6 +54,7 @@ public class FriendsPage {
     public void isFriendPresent (String name) {
         Assert.assertNotNull("Мы не видим друга с именем "
                 + name,getFriendByName(name));
+        System.out.println("На странице есть друг с именем " + name);
     }
 
     /**
