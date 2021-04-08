@@ -2,7 +2,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-
+//import static com.codeborne.selenide.Selenide.*;
 public class BaseClass {
     WebDriver driver;
     private final String BASE_URL = "https://ok.ru";
