@@ -16,6 +16,7 @@ public class FriendsPage {
     private String FRIENDS_BLOCK_LOCATOR = ".//*[@id='hook_Block_MyFriendsSquareCardsPagingB']";
     private String FRIEND_CARD = ".//*[@class = 'ugrid_i']";
     private String SEARCH_LOCATOR = ".//*[contains(@class, 'friend-search-input')]//*[contains(@class, 'input-field')]";
+    private String BUTTON_CLEAN_LOCATOR = ".//*[contains(@class, 'friend-search-input')]//*[contains(@class, 'button-clean')]";
 
     WebDriver driver;
     FriendsPage(WebDriver driver) {
@@ -42,8 +43,15 @@ public class FriendsPage {
         }
         return (WebElement) Collections.emptyList();
     }
+
+    /**
+     * Вводим текст в поисковую строку
+     * @param text текст поиска
+     * @return FriendsPage
+     */
     public FriendsPage search (String text){
         driver.findElement(By.xpath(SEARCH_LOCATOR)).sendKeys(text);
+        (new WebDriverWait(driver, 30)).until(ExpectedConditions.presenceOfElementLocated(By.xpath(BUTTON_CLEAN_LOCATOR)));
         return new FriendsPage(driver);
     }
 
