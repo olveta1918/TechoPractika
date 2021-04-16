@@ -9,9 +9,9 @@ import static com.codeborne.selenide.Condition.*;
  */
 public class LoginPage {
 
-    private static By LOGIN_FIELD = By.xpath(".//input[@id='field_email']");
-    private static By PASSWORD_FIELD = By.xpath(".//input[@id='field_password']");
-    private static By SIGN_IN_BUTTON = By.xpath(".//*[@value='Войти в Одноклассники']");
+    private static final By LOGIN_FIELD = By.xpath(".//input[@id='field_email']");
+    private static final By PASSWORD_FIELD = By.xpath(".//input[@id='field_password']");
+    private static final By SIGN_IN_BUTTON = By.xpath(".//*[@value='Войти в Одноклассники']");
 
     /**
      * Конструктор страницы

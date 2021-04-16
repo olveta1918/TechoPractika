@@ -8,9 +8,9 @@ import static com.codeborne.selenide.Selenide.*;
  * Главная страница пользователя
  */
 public class UserPage {
-    private static By FRIENDS_NAV = By.xpath(".//*[@data-l='t,friends']");
-    private static By AVATAR = By.id("hook_Block_Avatar");
-    private static By FEED = By.xpath(".//*[@class='main-feed portlet']");
+    private static final By FRIENDS_NAV = By.xpath(".//*[@data-l='t,friends']");
+    private static final By AVATAR = By.id("hook_Block_Avatar");
+    private static final By FEED = By.xpath(".//*[@class='main-feed portlet']");
 
     /**
      * Конструктор главной страницы пользователя

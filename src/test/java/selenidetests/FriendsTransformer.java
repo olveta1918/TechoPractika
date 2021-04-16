@@ -1,9 +1,10 @@
 package selenidetests;
 
 import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -14,18 +15,19 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class FriendsTransformer {
-    private static By FRIEND_CARD = By.xpath(".//*[@class = 'ugrid_i']");
+    private static final By FRIEND_CARD =
+            By.xpath(".//*[@id = 'hook_Loader_MyFriendsSquareCardsPagingBLoader']//*[@class = 'ugrid_i']");
 
     /**
      * Превращает список веб элементов в список FriendsWrapper
-     * @param elements
+     * @param elements список веб элементов
      * @return список FriendsWrapper
      */
     public static List<FriendsWrapper> wrap(ElementsCollection elements) {
         if (elements.isEmpty()) {
-            return Collections.<FriendsWrapper>emptyList();
+            return Collections.emptyList();
         }
-        List<FriendsWrapper> friends = new ArrayList<FriendsWrapper>();
+        List<FriendsWrapper> friends = new ArrayList<>();
         for (SelenideElement friend : elements) {
             friends.add(new FriendsWrapper(friend));
         }
@@ -40,32 +42,35 @@ public class FriendsTransformer {
         if ($(FRIEND_CARD).is(visible)) {
             return wrap($$(FRIEND_CARD));
         }
-        return Collections.<FriendsWrapper>emptyList();
+        return Collections.emptyList();
     }
 
     /**
      * Проверяем, виден ли друг с заданным именем
-     * @param name
+     * @param name имя
      * @return true - если виден
      */
     public static boolean isFriendPresent(String name) {
         List<FriendsWrapper> friends = getFriends();
         for (FriendsWrapper friendsWrapper : friends){
-            if (friendsWrapper.getName().contains(name))
+            if (friendsWrapper.name().getText().contains(name))
             {return true;}
         }
         return false;
     }
 
+
     private static class FriendsWrapper {
-        private SelenideElement element;
+        private final SelenideElement element;
+        private final By nameLine = By.xpath(".//*[@class = 'ellip']");
 
         public FriendsWrapper(SelenideElement element) {
             this.element = element;
         }
 
-        public String getName(){
-            return element.getText();
+        public SelenideElement name(){
+            return element.$(nameLine);
         }
+
     }
 }
