@@ -1,12 +1,14 @@
+package seleniumTest;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import static com.codeborne.selenide.Selenide.*;
 
 public class UserPage {
 
     private String FRIND_IN_LOCATOR = ".//*[@data-l='t,friends']";
+    private String Message_Locator = ".//*[@data-l='t,messages']";
     WebDriver driver;
 
     UserPage(WebDriver driver) {
@@ -22,6 +24,12 @@ public class UserPage {
         Thread.sleep(30);
         driver.findElement(By.xpath(FRIND_IN_LOCATOR)).click();
         return new FriendsPage(driver);
+    }
+
+    public MessagePage goToMessage() throws InterruptedException {
+        Thread.sleep(30);
+        driver.findElement(By.xpath(Message_Locator)).click();
+        return new MessagePage(driver);
     }
 
 

@@ -34,7 +34,7 @@ public class LoginPage {
      * Логинимся на сайт
      * @param username имя
      * @param password пароль
-     * @return UserPage главная страница пользователя
+     * @return seleniumTest.UserPage главная страница пользователя
      */
     public UserPage doLogin(String username, String password){
         $(LOGIN_FIELD).setValue(username);

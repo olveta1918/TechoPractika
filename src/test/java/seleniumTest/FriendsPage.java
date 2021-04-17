@@ -1,5 +1,6 @@
+package seleniumTest;
+
 import org.junit.Assert;
-import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -47,7 +48,7 @@ public class FriendsPage {
     /**
      * Вводим текст в поисковую строку
      * @param text текст поиска
-     * @return FriendsPage
+     * @return seleniumTest.FriendsPage
      */
     public FriendsPage search (String text){
         driver.findElement(By.xpath(SEARCH_LOCATOR)).sendKeys(text);

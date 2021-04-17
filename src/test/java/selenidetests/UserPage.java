@@ -30,7 +30,7 @@ public class UserPage {
 
     /**
      * Переходим в раздел друзей с главной страницы
-     * @return FriendsPage страница друзей
+     * @return seleniumTest.FriendsPage страница друзей
      */
     public FriendsPage gotoFriends(){
         $(FRIENDS_NAV).click();

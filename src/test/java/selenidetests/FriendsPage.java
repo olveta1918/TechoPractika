@@ -56,7 +56,7 @@ public class FriendsPage {
     /**
      * Выполняем поиск
      * @param name поисковый запрос
-     * @return новое состояние FriendsPage
+     * @return новое состояние seleniumTest.FriendsPage
      */
     public FriendsPage doSearch(String name){
         $(SEARCH_BLOCK_CSS).$("input").setValue(name);
@@ -69,7 +69,7 @@ public class FriendsPage {
 
     /**
      * Кликаем на крестик в строке поиска
-     * @return FriendsPage новое состояние страницы друзей
+     * @return seleniumTest.FriendsPage новое состояние страницы друзей
      */
     public FriendsPage clickClearSearchButton(){
         $(SEARCH_BLOCK_CSS).$(SEARCH_CLEAN).click();

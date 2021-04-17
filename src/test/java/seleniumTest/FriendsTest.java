@@ -1,3 +1,5 @@
+package seleniumTest;
+
 import org.junit.Test;
 
 public class FriendsTest extends BaseClass {

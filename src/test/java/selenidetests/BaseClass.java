@@ -19,7 +19,7 @@ public class BaseClass {
      * Логинимся на сайт
      * @param username логин
      * @param password пароль
-     * @return UserPage главная страница пользователя
+     * @return seleniumTest.UserPage главная страница пользователя
      */
     public UserPage login (String username, String password){
        return new LoginPage().doLogin(username, password);
