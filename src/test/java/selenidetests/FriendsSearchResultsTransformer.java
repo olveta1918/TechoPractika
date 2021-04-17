@@ -12,15 +12,18 @@ import java.util.List;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
 
+/**
+ * Работаем со списком элементов в результатах поиска на странице друзей
+ */
 public class FriendsSearchResultsTransformer {
     private static final By FRIEND_CARD = By.xpath(".//*[@class = 'gs_result_i_w ']");
     private static final By FRIENDS_LIST = By.id("hook_Block_MyFriendsFriendSearchPagingB");
+
     /**
-     * Превращает список веб элементов в список FriendsWrapper
+     * Превращает список веб элементов в список FriendsResultsWrapper
      * @param elements список веб элементов
-     * @return список FriendsWrapper
+     * @return список FriendsResultsWrapper
      */
     public static List<FriendsSearchResultsTransformer.FriendsResultsWrapper> wrap(ElementsCollection elements) {
         if (elements.isEmpty()) {
@@ -34,8 +37,8 @@ public class FriendsSearchResultsTransformer {
     }
 
     /**
-     * Собрали ссылки на все карды друзей
-     * @return List<FriendsWrapper> список ссылок на карды
+     * Собрали ссылки на все карды друзей в поисковой выдаче
+     * @return List<FriendsResultsWrapper> список ссылок на карды
      */
     public static List<FriendsSearchResultsTransformer.FriendsResultsWrapper> getFriends() {
         if ($(FRIENDS_LIST).is(visible)) {
@@ -44,6 +47,10 @@ public class FriendsSearchResultsTransformer {
         return Collections.emptyList();
     }
 
+    /**
+     * Проверяем, что все имена найденных друзей соответствуют поисковому запросу
+     * @param friendName имя, которое должно быть у каждого результата
+     */
     public static void checkAllNames (String friendName){
         List<FriendsSearchResultsTransformer.FriendsResultsWrapper> friends = getFriends();
         Assert.assertFalse("На странице нет ни одного друга",friends.isEmpty());

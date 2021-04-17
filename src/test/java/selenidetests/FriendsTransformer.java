@@ -1,9 +1,7 @@
 package selenidetests;
 
 import com.codeborne.selenide.ElementsCollection;
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
-import org.junit.Assert;
 import org.openqa.selenium.By;
 
 import java.util.ArrayList;
@@ -12,11 +10,13 @@ import java.util.List;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
 
+/**
+ * Работаем с элементами списка друзей на странице друзей
+ */
 public class FriendsTransformer {
-    private static final By FRIEND_CARD =
-            By.xpath(".//*[@id = 'hook_Loader_MyFriendsSquareCardsPagingBLoader']//*[@class = 'ugrid_i']");
+    private static final By FRIENDS_BLOCK = By.id("hook_Loader_MyFriendsSquareCardsPagingBLoader");
+    private static final By FRIEND_CARD = By.xpath(".//*[@class = 'ugrid_i']");
 
     /**
      * Превращает список веб элементов в список FriendsWrapper
@@ -39,8 +39,8 @@ public class FriendsTransformer {
      * @return List<FriendsWrapper> список ссылок на карды
      */
     public static List<FriendsWrapper> getFriends() {
-        if ($(FRIEND_CARD).is(visible)) {
-            return wrap($$(FRIEND_CARD));
+        if ($(FRIENDS_BLOCK).is(visible)) {
+            return wrap($(FRIENDS_BLOCK).$$(FRIEND_CARD));
         }
         return Collections.emptyList();
     }
